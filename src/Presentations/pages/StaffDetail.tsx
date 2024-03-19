@@ -11,107 +11,13 @@ import ReactModal from "react-modal";
 import { useState, useRef, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Role, User } from "../../Domain/User/User";
-import { initalAssetRequest, initalAssets, initalDepartments, initalMaintenanceRequest, initalRequest } from "../../Domain/list";
+import { initalAssetRequest, initalAssets, initalDepartments, initalMaintenanceRequest, initalRequest, initalStaffs } from "../../Domain/list";
 import { Asset } from "../../Domain/Asset/Asset";
 import { AssetMaintenanceRequest } from "../../Domain/Maintenance/AssetMaintenanceRequest";
 import { AssetRequest } from "../../Domain/AssetRequest/AssetRequest";
 import EditStaff from "./EditStaff";
+import DeleteStaff from "./DeletStaff";
 // import Department, { initalDepartments } from "./Department"
-const initalStaffs = [
-    {
-      id: "user_1",
-      email: "user1@example.com",
-      firstName: "John",
-      lastName: "Doe",
-      roles: [Role.Manager],
-      organizationId: "org_1",
-      departmentId: "department_1",
-    },
-    {
-      id: "user_2",
-      email: "user2@example.com",
-      firstName: "Jane",
-      lastName: "Smith",
-      roles: [Role.Admin],
-      organizationId: "org_2",
-      departmentId: "department_1",
-    },
-    {
-      id: "user_3",
-      email: "user3@example.com",
-      firstName: "Michael",
-      lastName: "Lee",
-      roles: [Role.Admin],
-      organizationId: "org_1",
-      departmentId: "department_1",
-    },
-    {
-      id: "user_4",
-      email: "user4@example.com",
-      firstName: "Sarah",
-      lastName: "Garcia",
-      roles: [Role.Admin],
-      organizationId: "org_2",
-      departmentId: "department_1",
-    },
-    {
-      id: "user_5",
-      email: "user5@example.com",
-      firstName: "David",
-      lastName: "Kim",
-      roles: [Role.Admin],
-      organizationId: "org_3",
-      departmentId: "department_1",
-    },
-    {
-      id: "user_6",
-      email: "user6@example.com",
-      firstName: "Amanda",
-      lastName: "Robinson",
-      roles: [Role.Admin],
-      organizationId: "org_3",
-      departmentId: "department_1",
-    },
-    {
-      id: "user_7",
-      email: "user7@example.com",
-      firstName: "Charles",
-      lastName: "Young",
-      roles: [Role.Admin],
-      organizationId: "org_1",
-      departmentId: "department_1",
-    },
-    {
-      id: "user_8",
-      email: "user8@example.com",
-      firstName: "Ashley",
-      lastName: "Nguyen",
-      roles: [Role.Admin],
-      organizationId: "org_2",
-      departmentId: "department_1",
-    },
-    {
-      id: "user_9",
-      email: "user9@example.com",
-      firstName: "William",
-      lastName: "Brown",
-      roles: [Role.Admin],
-      organizationId: "org_3",
-      departmentId:"department_1",
-    },
-    {
-      id: "user_10",
-      email: "user10@example.com",
-      firstName: "Jennifer",
-      lastName: "Davis",
-      roles: [Role.Admin],
-      organizationId: "org_1",
-      departmentId: "department_1",
-    },
-  ];
-
-
-
 function StaffDetail() {
     const {staffId} = useParams();
    
@@ -120,7 +26,7 @@ function StaffDetail() {
         email: "user9@example.com",
         firstName: "William",
         lastName: "Brown",
-        roles: [Role.Admin],
+        role: Role.Admin,
         organizationId: "org_3",
         departmentId: "department_1",
       }
@@ -131,9 +37,15 @@ function StaffDetail() {
 
     const [index,setIndex]=useState(0);
     const [isEditModal,setIsEditModalOpen] = useState(false);
-
+    const [isModalOpenTwo, setIsModalOpenTwo] = useState(false);
+    const [isModalOpenThree, setIsModalOpenThree] = useState(false);
     const handleEditClicked = ()=>{
-        setIsEditModalOpen(m=>m=!isEditModal)
+      
+      setIsModalOpenThree(m=>m=!isModalOpenThree)
+    }
+    const handleDeleteClicked = ()=>{
+      
+      setIsModalOpenTwo(m=>m=!isModalOpenTwo)
     }
 
     const handleClicked = (value:number)=>{
@@ -154,24 +66,13 @@ function StaffDetail() {
 
 	const [selectedItem, setSelectedItem] = useState(1);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [isModalOpenTwo, setIsModalOpenTwo] = useState(false);
-	const [isModalOpenThree, setIsModalOpenThree] = useState(false);
+
 
 	const fileInputRef = useRef(null);
 
 	const options = ["Option 1", "Option 2", "Option 3"];
 	const [selectedOption, setSelectedOption] = useState("");
 	const [isDropdownOpen, setDropdownOpen] = useState(false);
-
-	// const handleFileChange = (event) => {
-	// 	const selectedFile = event.target.files[0];
-	// };
-
-	// const handleOptionClick = (option) => {
-	// 	setSelectedOption(option);
-	// 	setDropdownOpen(false);
-	// };
-
 	return (
 		<div className='staff-detail'>
 				<div className='body'>
@@ -181,7 +82,7 @@ function StaffDetail() {
 							<p> {staff.firstName} </p>
 							<p> {staff.lastName} </p>
                             <p> {staff.email} </p>
-							<p>{Role[staff.roles[0]]} </p>
+							<p>{Role[staff.role]} </p>
 						</div>
                         <div> 
 						<button
@@ -204,50 +105,21 @@ function StaffDetail() {
 									className='modal-content custom-property'
 									overlayClassName='modal-overlay'
 								>
-									<EditStaff handlModal={handleEditClicked}/>
+									<EditStaff handlModal={handleEditClicked} staff={staff}/>
 								</ReactModal>
 							
-					
-					
-						{isModalOpenTwo && (
-							<div className='modal-overlay'>
+	
 								<ReactModal
 									isOpen={isModalOpenTwo}
 									onRequestClose={() => setIsModalOpenTwo(false)}
-									className='modal-content custom-property delete'
-									overlayClassName='modal-overlay'
-								>
-									<p style={{ fontSize: "20px", margin: "0" }}>
-										Are you sure you want to delete
-									</p>
-									<h2> Employee-001? </h2>
-									<div className='buttons' style={{ marginRight: "-15em" }}>
-										<button
-											onClick={() => setIsModalOpenTwo(false)}
-											style={{
-												color: "white",
-												backgroundColor: "black",
-												marginRight: "16em",
-											}}
-										>
-											yes
-										</button>
-										<Link to='/property'>
-											<button
-												style={{
-													color: "black",
-													backgroundColor: "white",
-													marginRight: "16em",
-												}}
-											>
-												No
-											</button>
-										</Link>
-									</div>
+									className='modal-content custom-property'
+									overlayClassName='modal-overlay'>
+                  <DeleteStaff staff={staff} handleModal={handleDeleteClicked}/>
+						    
 								</ReactModal>
-							</div>
-						)}
+
 					</section>
+
 					<section className='two'>
 						<h3> Owned Asset </h3>
                         <div className="list-box">

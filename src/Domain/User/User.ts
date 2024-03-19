@@ -11,5 +11,5 @@ export interface User{
     firstName:string;
     lastName:string;
     departmentId:string;
-    roles: Role[];
+    role: Role;
 }
