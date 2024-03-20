@@ -7,6 +7,7 @@ export interface Asset{
   addDateTime: Date;
   owner?: User;
   active: boolean; 
-  reason?:string;
+  assignReason?:string;
   assignDateTime?: Date;
+  removeReason?:string;
 }

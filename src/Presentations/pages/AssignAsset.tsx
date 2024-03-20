@@ -29,7 +29,7 @@ function AssignAsset(props:Props) {
     }
     const Assign =()=>{
         props.asset.owner = user
-        props.asset.reason= reason
+        props.asset.assignReason= reason
         props.asset.active=false
         props.asset.assignDateTime= new Date(Date.now())
         console.log("ddd")
@@ -68,9 +68,11 @@ function AssignAsset(props:Props) {
                         }}
                         onClick={Assign}
                     >
-                        Assign
+                        Allocate
                     </button>
                 </Link>
+
+      
             </div>
         </div>
     </div>)
