@@ -146,8 +146,8 @@ function StaffDetail() {
                             <thead>
                                 <th>Request ID</th>
                                 <th>Asset ID</th>
-                                <th>Type</th>
-                                <th>Quantity</th>
+                                <th>Staff ID</th>
+                                <th>created Date</th>
                                 <th>Resolved Date</th>
                                 <th></th>
                             </thead>
@@ -156,8 +156,8 @@ function StaffDetail() {
                                     <tr>
                                       <td>{request.id}</td>
                                       <td>{request.asset.id}</td>
-                                      <td>{request.type}</td>
-                                      <td>{request.quantity}</td>
+                                      <td>{request.user.id}</td>
+                                      <td>{request.createDatetime.toLocaleDateString()}</td>
                                       <td>{request.resolveDatetime == undefined ? "-" : request.resolveDatetime.toLocaleDateString()}</td>
                                       <td>Detail</td>
                                     </tr>

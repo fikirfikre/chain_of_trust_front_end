@@ -7,11 +7,12 @@ export interface AssetRequest{
   createDatetime: Date;
   resolveDatetime?: Date;
   approved?: boolean;
-  userId: string;
+  user: User;
   rejected?: boolean;
   rejectionReason?:string;
-  type: string;
-  quantity: number;
+  questionReason?:string;
+  // type: string;
+  // quantity: number;
   asset:Asset;
   }
   

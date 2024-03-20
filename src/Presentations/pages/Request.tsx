@@ -2,17 +2,30 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import styles from './Staff.module.css'
 import { initalRequest } from "../../Domain/list";
+import Modal from "react-modal";
+import CreateRequest from "./CreateRequest";
 export default function Requests(){
  
       
       // Sample Asset Maintenance Request object
     const [requests,setRequest] = useState(initalRequest);
+    const [isModalOpen,setModalOpen] = useState(false)
+    const handleModal=()=>{
+        setModalOpen(false)
+    }
     return <div>
             <Navbar/>
+            <Modal
+            isOpen={isModalOpen}
+            className='modal-content custom-property'
+    overlayClassName='modal-overlay'
+            >
+                <CreateRequest handleModal={handleModal}/>
+            </Modal>
             <div className={styles.table_box}>
             <div className={styles.all_bar}>
                 <h3>All</h3>
-                <button>+</button>
+                <button onClick={()=>setModalOpen(true)}>+</button>
             </div>
             <table className={styles.table}>
             <thead>
