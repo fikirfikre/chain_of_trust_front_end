@@ -6,6 +6,7 @@ import { initalDepartments } from "../../Domain/list";
 import { useState } from "react";
 import DepartmentDropDown from "../components/DepartmentDropDown";
 import RolesDropDown from "../components/RolesDropDown";
+import { Department } from "../../Domain/Department/Department";
 interface RegisterProps{
     handlModal : ()=>void
 }
@@ -16,8 +17,8 @@ function RegisterStaff(props:RegisterProps){
         firstName: "",
         lastName: "",
         role: Role.User,
-        organizationId: "",
-        departmentId: "",
+        // organizationId: "",
+        department: undefined,
       }
     const [isRoleOpen,setRoleOpen] = useState(false);
     const toggleRoleDropdown = () =>{
@@ -29,8 +30,16 @@ function RegisterStaff(props:RegisterProps){
     const handleSelectedRole = (value:Role)=>{
         setStaff({...newStaff,"role":value})
     }
-    const handleSelectedDepartment = (value:string)=>{
-        setStaff({...newStaff,"departmentId":value})
+    const [selectedDepartment,setSelectedDepartment] = useState<Department>()
+    const handleSelectedDepartment = (value:Department|undefined)=>{
+        setSelectedDepartment((dep)=>dep=value)
+        setStaff({...newStaff,"department":value})
+    }
+    const updateDepartmentStaff = (department:Department,newStaff:User)=>{
+        const departmentIndex =   initalDepartments.findIndex(dep=>department.id === dep?.id)
+        if(departmentIndex !== -1){
+            initalDepartments[departmentIndex].staff?.push(newStaff.id)
+        }
     }
     const toggleDepDropdown = () => {
         setDepOpen(!isDepOpen);
@@ -74,6 +83,7 @@ function RegisterStaff(props:RegisterProps){
                         backgroundColor: "white",
                        
                     }}
+                    onClick={()=>{updateDepartmentStaff(selectedDepartment!,newStaff)}}
                 >
                     Save
                 </button>

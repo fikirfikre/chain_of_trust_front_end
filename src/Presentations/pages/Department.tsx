@@ -2,10 +2,11 @@ import { useState } from "react";
 import Navbar from "../components/Navbar"
 import styles from './Staff.module.css'
 import { initalDepartments } from "../../Domain/list";
+import { Department } from "../../Domain/Department/Department";
 
-function Department() {
+function DepartmentPage() {
 
-     const [departments,setDepartment]=useState(initalDepartments)      
+     const [departments,setDepartment]=useState<Department[]>(initalDepartments)      
     return <div>
         <Navbar />
         <div className={styles.table_box}>
@@ -28,8 +29,8 @@ function Department() {
                                     <td>
                                        {department.name}
                                     </td>
-                                    <td>{department.staff.length}</td>
-                                    <td>{department.managerId == undefined? "-": department.managerId}</td>
+                                    <td>{department.staff?.length}</td>
+                                    <td>{department.manager == undefined? "-": department.manager.id}</td>
             
                                     <td></td>
                                 </tr> 
@@ -40,4 +41,4 @@ function Department() {
         </div>
     </div>
 }
-export default Department
+export default DepartmentPage

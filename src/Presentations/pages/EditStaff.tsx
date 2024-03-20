@@ -4,6 +4,8 @@ import DepartmentDropDown from "../components/DepartmentDropDown";
 import { Link } from "react-router-dom";
 import { Role, User } from "../../Domain/User/User";
 import { Department } from "../../Domain/Department/Department";
+import { initalDepartments } from "../../Domain/list";
+
 interface Props {
     handlModal: () => void
     staff: User
@@ -11,22 +13,57 @@ interface Props {
 function EditStaff(props: Props) {
     const [isRoleOpen, setRoleOpen] = useState(false);
     const [isDepOpen, setDepOpen] = useState(false);
-    const [selectedRoles,setRolesOption] = useState(props.staff.role)
-    const [selectedDepartment,setDepartmentOption] = useState(props.staff.departmentId)
+    const [selectedRole,setRolesOption] = useState(props.staff.role)
+    const [selectedDepartment,setDepartmentOption] = useState(props.staff.department)
     const [editedStaff,setStaff] = useState<User>(props.staff);
+    const [departments,setDepartment]=useState<Department[]>(initalDepartments)
+
     const handleInputChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
         const {name,value} = event.target;
         console.log()
         setStaff({...props.staff,[name]:value});
       };
+
       const handleSelectChange = (value:Role)=>{
-        setStaff({...props.staff,"role":value})
+        setRolesOption(value)
+        // setStaff({...props.staff,"role":value})
       }
-      const handleSelectDepChange =(value:string)=>{
-        setStaff({...props.staff,"departmentId":value})
+
+      const handleSelectDepChange =(value:Department|undefined)=>{
+        setDepartmentOption(value)
+        //  setStaff({...props.staff,"department":value})
+        //  setDepartmentOption(value)
       }
-      console.log("dd")
-      console.log(editedStaff)
+
+      const edituserAndupdateDepartment = (dep:Department|undefined,staff:User)=>{
+        const departmentIndex =   initalDepartments.findIndex(department=>department.id === dep?.id)
+        if (departmentIndex !== -1){
+            const previousDepartment = staff.department;
+            if(previousDepartment && previousDepartment == staff.department){
+                const previousDepartmentIndex = initalDepartments.findIndex(
+                    dept=>dept.id === previousDepartment.id
+                );
+                if (previousDepartmentIndex !== -1 ){
+                    const staffIndex = previousDepartment.staff?.findIndex(
+                        user => user === staff.id
+                    );
+                    if(staffIndex !== -1){
+                        initalDepartments[previousDepartmentIndex].staff?.splice(staffIndex!,1)
+                    }
+                }else {
+                    console.warn("previous departmetn not found")
+                }
+            }
+            staff.department = dep;
+            initalDepartments[departmentIndex].staff?.push(staff.id)
+        }else{
+            console.error("Departmetn not found")
+        }
+  
+      }
+      
+      
+      
 
     const toggleRoleDropdown = () => {
         setDepOpen(false);
@@ -52,7 +89,7 @@ function EditStaff(props: Props) {
             <input placeholder='Enter email' name="email" value={editedStaff.email} onChange={handleInputChange} />
             <div className='row'>
                 <RolesDropDown toggleDropdown={toggleRoleDropdown} isOpen={isRoleOpen} staff={editedStaff} handleInputChange={handleSelectChange} />
-                <DepartmentDropDown toggleDropdown={toggleDepDropdown} isOpen={isDepOpen} staff={editedStaff} handleInputChange={handleSelectDepChange}/>
+                <DepartmentDropDown toggleDropdown={toggleDepDropdown} isOpen={isDepOpen} staff={editedStaff} handleInputChange={handleSelectDepChange} selectedDep={selectedDepartment}/>
             </div>
             <div className='buttons'>
                 <button
@@ -65,13 +102,16 @@ function EditStaff(props: Props) {
                 >
                     Cancel
                 </button>
-                <Link to='/staff'>
+                <Link to='/staffs'>
                     <button
                         style={{
                             color: "black",
                             backgroundColor: "white",
 
                         }}
+                        onClick={
+                          ()=>  edituserAndupdateDepartment(selectedDepartment,editedStaff)
+                        }
                     >
                         Save
                     </button>

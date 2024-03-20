@@ -12,6 +12,6 @@ export interface AssetRequest{
   rejectionReason?:string;
   type: string;
   quantity: number;
-  assetId:string;
+  asset:Asset;
   }
   

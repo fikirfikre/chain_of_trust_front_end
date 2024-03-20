@@ -941,6 +941,8 @@
   .signin-page .inputs {
 	  display: flex;
 	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
 	  
 	  /* margin-left: 4em; */
 	  /* width: 45%; */
@@ -1651,6 +1653,8 @@
 	  position: absolute;
 	  top:6rem;
 	  flex:1;
+	  max-height: 13rem;
+	  overflow-y: auto;
 	  
   }
   .options-list li:hover{
@@ -1715,19 +1719,23 @@
   
   /* /////////////////  property detail //////////////////// */
   
-  .property-detail {
+  /* .property-detail {
 	  display: flex;
-  }
-  .property-detail .side-bar {
+	  width: 100%;
+	  box-sizing: border-box;
+  } */
+  /* .property-detail .side-bar {
 	  flex: 1;
   }
-  .property-detail .content {
-	  flex: 7.5;
-  }
-  .property-detail .content .body {
+  */
+  
+  /* .property-detail .content {
+	  width: 100%;
+  }  */
+  /* .property-detail .content .body {
 	  padding: 1em 0 0 3em;
-  }
-  .property-detail .content .body .one {
+  } */
+  /* .property-detail .content .body .one {
 	  display: flex;
 	  align-items: end;
 	  margin-left: -3em;
@@ -1770,7 +1778,7 @@
 	  padding-left: 10px;
 	  border-bottom: 2px solid rgb(214, 214, 214);
 	  font-size: 18px;
-  }
+  } */
   
   /* ?/////////////////       staff       //////////////////////// */
   .staff {
@@ -1784,7 +1792,7 @@
   }
   
   /* ///////////// staff detail  ////// */
-  .staff-detail {
+  .staff-detail,.property-detail {
 	  display: flex;
 	  box-sizing: border-box;
 	  margin: 3rem;
@@ -1793,24 +1801,28 @@
   .staff-detail .side-bar {
 	  flex: 1;
   }
+  .property-detail .body,
   .staff-detail .body {
 	  width: 100%;
 	  box-sizing: border-box;
   }
-  .staff-detail .body .one {
+  .staff-detail .body .one ,
+   .property-detail .body .one {
 	  
 	  display: flex;
-	  align-items: end;
+	  align-items:center;
 	  justify-content: space-between;
   
   }
   .staff-detail  .body .one .col {
 	  /* margin-right: 60em; */
   }
-  .staff-detail  .body .col h4 {
+  .staff-detail  .body .col h4,
+  .property-detail  .body .col h4 {
 	  font-size: 20px;
   }
-  .staff-detail  .body button {
+  .staff-detail  .body button,
+  .property-detail  .body button {
 	  background-color: white;
 	  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);
 	  padding: 10px 25px;
@@ -1819,14 +1831,36 @@
 	  font-size: 18px;
 	  border-radius: 10px;
   }
-  .staff-detail  .body .two {
+  .property-detail  .body button{
+	margin: 25px;
+  }
+  .staff-detail  .body .two
+  {
 	  margin-left: 3em;
 	  margin-top: 4em;
   }
-  .staff-detail  .body .two h3 {
+ 
+  .property-detail  .body .col{
+	/* border: #969595 solid 0.5px; */
+	width: 30%;
+	padding: 2rem 4rem;
+
+	
+  }
+  .property-detail  .body .col p{
+	margin:1rem 0;
+
+
+  }
+  .property-detail  .body .one .col{
+	margin-bottom: 1rem;
+  }
+  .staff-detail  .body .two h3,
+  .property-detail  .body .two  h3{
 	  font-size: 20px;
   }
-  .staff-detail  .body .two ul {
+  .staff-detail  .body .two ul ,
+  .property-detail  .body .two ul{
 	  list-style: none;
 	  display: flex;
 	  justify-content: space-between;
@@ -1844,6 +1878,7 @@
   .staff-detail  .body .three h3 {
 	  font-size: 20px;
   }
+
   .staff-detail  .body .three ul {
 	  list-style: none;
 	  display: flex;

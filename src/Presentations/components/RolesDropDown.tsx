@@ -38,7 +38,8 @@ export default function RolesDropDown(props:Props){
                 <li
                     key={option}
              onClick={() =>{ setOption((s)=>s=option);
-                props.handleInputChange(selectedOption!)}}
+                props.handleInputChange(selectedOption!)
+                props.toggleDropdown() }}
                 >
                     {Role[option]}
                 </li>

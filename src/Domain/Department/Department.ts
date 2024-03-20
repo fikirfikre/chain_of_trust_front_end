@@ -1,7 +1,8 @@
+import { User } from "../User/User";
 
 export interface Department{
     id:string;
     name:string;
-    managerId?: string;
-    staffId? : string[];
+    manager?: User;
+    staff? : string[];
 }

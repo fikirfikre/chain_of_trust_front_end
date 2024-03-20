@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import styles from './Staff.module.css'
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import RegisterStaff from "./RegisterStaff";
-import ReactModal from "react-modal";
+import Modal from "react-modal";
 export default function Staffs(){
     const initalStaffs = [
         {
@@ -112,7 +112,7 @@ export default function Staffs(){
    
             <Navbar/>
            
-            <ReactModal
+            <Modal
     isOpen={isModalOpen}
     
     //  onRequestClose={() => setIsModalOpen(false)}
@@ -121,7 +121,7 @@ export default function Staffs(){
 >
   
 <RegisterStaff handlModal={handleModal}/>
-</ReactModal>
+</Modal>
             <div className={styles.table_box}>
             <div className={styles.all_bar}>
                 <h3>All</h3>

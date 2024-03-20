@@ -1,47 +1,75 @@
-import { Role } from "./User/User";
+import { Department } from "./Department/Department";
+import { Role, User } from "./User/User";
 
-export const initalDepartments = [
+
+export const initalDepartments:Department[] = [
     {
       id: "department_1",
       name: "Engineering",
-      managerId: "user_2", // Use managerId instead of manager object
-      staff: ["user_3", "user_8"], // Array of user IDs for staff
+      manager :{
+        id: "user_1",
+        email: "user1@example.com",
+        firstName: "John",
+        lastName: "Doe",
+        role: Role.Manager,
+     
+        // organizationId: "org_1",
+      
+      },
+      staff:["user_1"] // Use manager iundefinedf manager undefined    staff: ["user_3", "user_8"], // Array of user IDs for staff
     },
     {
       id: "department_2",
       name: "Sales",
-      managerId: "user_4",
-      staff: ["user_5", "user_9"],
+      manager:   {
+        id: "user_1",
+        email: "user1@example.com",
+        firstName: "John",
+        lastName: "Doe",
+        role: Role.Manager,
+        // organizationId: "org_1",
+       
+      },
+      staff: [],
     },
     {
       id: "department_3",
       name: "Marketing",
-      managerId: "user_1",
-      staff: ["user_6", "user_7"],
+      manager: undefined,
+      staff: [],
     },
     {
       id: "department_4",
       name: "Human Resources",
-      managerId: undefined, // No manager assigned yet
-      staff: ["user_10"],
+      manager: undefined, // No manager assigned yet
+      staff: [],
     },
     {
       id: "department_5",
       name: "Finance",
-      managerId: "user_5",
+      manager:   {
+        id: "user_1",
+        email: "user1@example.com",
+        firstName: "John",
+        lastName: "Doe",
+        role: Role.Manager,
+        // organizationId: "org_1",
+       
+      },
       staff: [], // No staff assigned yet
     },
     // Add more department objects following the same structure
   ];
-export const initalStaffs = [
+export const initalStaffs:User[] = [
   {
     id: "user_1",
     email: "user1@example.com",
     firstName: "John",
     lastName: "Doe",
     role: Role.Manager,
-    organizationId: "org_1",
-    departmentId: "department_1",
+    department: initalDepartments[0]
+    // organizationId: "org_1",
+   
   },
   {
     id: "user_2",
@@ -49,8 +77,9 @@ export const initalStaffs = [
     firstName: "Jane",
     lastName: "Smith",
     role: Role.Admin,
-    organizationId: "org_2",
-    departmentId: "department_1",
+    // organizationId: "org_2",
+    department: initalDepartments[0]
+    
   },
   {
     id: "user_3",
@@ -58,8 +87,8 @@ export const initalStaffs = [
     firstName: "Michael",
     lastName: "Lee",
     role: Role.Admin,
-    organizationId: "org_1",
-    departmentId: "department_1",
+    // organizationId: "org_1",
+    
   },
   {
     id: "user_4",
@@ -67,8 +96,8 @@ export const initalStaffs = [
     firstName: "Sarah",
     lastName: "Garcia",
     role: Role.Admin,
-    organizationId: "org_2",
-    departmentId: "department_1",
+    // organizationId: "org_2",
+    
   },
   {
     id: "user_5",
@@ -76,8 +105,8 @@ export const initalStaffs = [
     firstName: "David",
     lastName: "Kim",
     role: Role.Admin,
-    organizationId: "org_3",
-    departmentId: "department_1",
+    // organizationId: "org_3",
+    
   },
   {
     id: "user_6",
@@ -85,8 +114,8 @@ export const initalStaffs = [
     firstName: "Amanda",
     lastName: "Robinson",
     role: Role.Admin,
-    organizationId: "org_3",
-    departmentId: "department_1",
+    // organizationId: "org_3",
+    
   },
   {
     id: "user_7",
@@ -94,8 +123,8 @@ export const initalStaffs = [
     firstName: "Charles",
     lastName: "Young",
     role: Role.Admin,
-    organizationId: "org_1",
-    departmentId: "department_1",
+    // organizationId: "org_1",
+    
   },
   {
     id: "user_8",
@@ -103,8 +132,8 @@ export const initalStaffs = [
     firstName: "Ashley",
     lastName: "Nguyen",
     role: Role.Admin,
-    organizationId: "org_2",
-    departmentId: "department_1",
+    // organizationId: "org_2",
+    
   },
   {
     id: "user_9",
@@ -112,54 +141,58 @@ export const initalStaffs = [
     firstName: "William",
     lastName: "Brown",
     role: Role.Admin,
-    organizationId: "org_3",
-    departmentId:"department_1",
-  },
+    // organizationId: "org_3",
+      },
   {
     id: "user_10",
     email: "user10@example.com",
     firstName: "Jennifer",
     lastName: "Davis",
     role: Role.Admin,
-    organizationId: "org_1",
-    departmentId: "department_1",
+    // organizationId: "org_1",
+    
   },
 ];
 
   export    const initalAssets = [
         {
           id: "asset_1",
+          title:"asset",
           type: "Image",
-          addDateTime: "2024-03-18T09:48:00Z", // Use ISO 8601 for date and time
-          owner: "user_1",
+          addDateTime: new Date("2024-03-18T10:00:00Z"), // Use ISO 8601 for date and time
+          owner: undefined,
           active: true,
         },
         {
           id: "asset_2",
+          title:"asset",
           type: "Document",
-          addDateTime: "2024-03-15T12:30:00Z",
-          owner: "user_1",
+          addDateTime: new Date("2024-03-18T10:00:00Z"),
+          owner: initalStaffs[1],
           active: false,
         },
         {
           id: "asset_3",
+          title:"asset",
           type: "Video",
-          addDateTime: "2024-03-17T10:15:00Z",
-          owner: undefined, // No owner assigned
+          addDateTime: new Date("2024-03-18T10:00:00Z"),
+          owner: undefined, // No ownerId assigned
           active: true,
         },
         {
           id: "asset_4",
+          title:"asset",
           type: "Audio",
-          addDateTime: "2024-03-14", // Omit time for simpler date
-          owner:"user_1",
+          addDateTime:new Date("2024-03-18T10:00:00Z"), // Omit time for simpler date
+          owner:undefined,
           active: true,
         },
         {
           id: "asset_5",
+          title:"asset",
           type: "Image",
-          addDateTime: "2024-03-16",
-          owner:"user_1",
+          addDateTime: new Date("2024-03-18T10:00:00Z"),
+          owner:initalStaffs[0],
           active: false,
         },
         // Add more asset objects following the same structure
@@ -170,7 +203,7 @@ export const initalStaffs = [
           createDatetime: new Date("2024-03-18T10:00:00Z"),
           resolveDatetime: new Date("2024-03-18T11:15:00Z"),
           approved: false,
-          userId: "user_1",
+          user: initalStaffs[0],
           assetId: "asset_1",  // No asset ID for new asset request
           type: "New Asset",
           quantity: 2,  // Requesting 2 new assets
@@ -182,7 +215,7 @@ export const initalStaffs = [
           createDatetime: new Date("2024-03-18T11:15:00Z"),
           resolveDatetime: new Date("2024-03-18T11:15:00Z"),
           approved: false,
-          userId: "user_4",
+          user: initalStaffs[0],
           assetId: "asset_2",  // Requesting maintenance for existing asset
           type: "Existing Asset",
           quantity: 1,  // Quantity of 1 (implicitly understood for existing asset)
@@ -194,7 +227,7 @@ export const initalStaffs = [
             createDatetime: new Date("2024-03-18T11:15:00Z"),
             resolveDatetime: undefined,
             approved: false,
-            userId: "user_3",
+            user: initalStaffs[0],
             assetId: "asset_1",  // Requesting maintenance for existing asset
             rejected: false,
             rejectionReason: undefined,
@@ -206,7 +239,7 @@ export const initalAssetRequest = [
         createDatetime: new Date("2024-03-18T10:00:00Z"),
         resolveDatetime: new Date("2024-03-18T11:15:00Z"),
         approved: false,
-        userId: "user_1",
+        user: initalStaffs[0],
         assetId: "asset_1",  // No asset ID for new asset request
         type: "New Asset",
         quantity: 2,  // Requesting 2 new assets
@@ -218,7 +251,7 @@ export const initalAssetRequest = [
         createDatetime: new Date("2024-03-18T11:15:00Z"),
         resolveDatetime: new Date("2024-03-18T11:15:00Z"),
         approved: false,
-        userId: "user_4",
+        user: initalStaffs[0],
         assetId: "asset_2",  // Requesting maintenance for existing asset
         type: "Existing Asset",
         quantity: 1,  // Quantity of 1 (implicitly understood for existing asset)
@@ -288,3 +321,15 @@ export const initalMaintenanceRequest = [
             rejectionReason: undefined,
           }
 ]
+// export const categoryList: Category[] = [
+//   { id: 'food', title: 'Food' },
+//   { id: 'electronics', title: 'Electronics' },
+//   { id: 'clothing', title: 'Clothing' },
+//   { id: 'home_and_garden', title: 'Home & Garden' },
+//   { id: 'beauty', title: 'Beauty' },
+//   { id: 'health_and_wellness', title: 'Health & Wellness' },
+//   { id: 'toys_and_games', title: 'Toys & Games' },
+//   { id: 'sports_and_outdoors', title: 'Sports & Outdoors' },
+//   { id: 'books_and_music', title: 'Books & Music' },
+//   { id: 'travel', title: 'Travel' },
+// ];

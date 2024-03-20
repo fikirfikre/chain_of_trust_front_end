@@ -10,6 +10,6 @@ export interface User{
     email:string;
     firstName:string;
     lastName:string;
-    departmentId:string;
     role: Role;
+    department?:Department;
 }

@@ -8,6 +8,7 @@ import {
 } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
 import ReactModal from "react-modal";
+import Modal from "react-modal";
 import { useState, useRef, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Role, User } from "../../Domain/User/User";
@@ -54,25 +55,15 @@ function StaffDetail() {
     useEffect(()=>{
         const filterUser = initalStaffs.filter((user) => user.id == staffId);
         setStaff(filterUser[0])
-        const assets = initalAssets.filter((asset)=>asset.owner == staffId);
+        const assets = initalAssets.filter((asset)=>asset.owner?.id == staffId);
         setAsset(assets)
-        const requests = initalAssetRequest.filter((request)=>request.userId == staffId);
-         setAssetRequest(requests)
-        const maintreq = initalMaintenanceRequest.filter((request)=>request.userId == staffId);
-        setMaintenanceRequest(maintreq)
+        // const requests = initalAssetRequest.filter((request)=>request.userId == staffId);
+        //  setAssetRequest(requests)
+        // const maintreq = initalMaintenanceRequest.filter((request)=>request.userId == staffId);
+        // setMaintenanceRequest(maintreq)
     
     },[])
   
-
-	const [selectedItem, setSelectedItem] = useState(1);
-	const [isModalOpen, setIsModalOpen] = useState(false);
-
-
-	const fileInputRef = useRef(null);
-
-	const options = ["Option 1", "Option 2", "Option 3"];
-	const [selectedOption, setSelectedOption] = useState("");
-	const [isDropdownOpen, setDropdownOpen] = useState(false);
 	return (
 		<div className='staff-detail'>
 				<div className='body'>
@@ -99,24 +90,24 @@ function StaffDetail() {
 						</button>
                         </div>
 						
-								<ReactModal
+								<Modal
 									isOpen={isModalOpenThree}
 									onRequestClose={() => setIsModalOpenThree(false)}
 									className='modal-content custom-property'
 									overlayClassName='modal-overlay'
 								>
 									<EditStaff handlModal={handleEditClicked} staff={staff}/>
-								</ReactModal>
+								</Modal>
 							
 	
-								<ReactModal
+								<Modal
 									isOpen={isModalOpenTwo}
 									onRequestClose={() => setIsModalOpenTwo(false)}
 									className='modal-content custom-property'
 									overlayClassName='modal-overlay'>
                   <DeleteStaff staff={staff} handleModal={handleDeleteClicked}/>
 						    
-								</ReactModal>
+								</Modal>
 
 					</section>
 
@@ -137,7 +128,7 @@ function StaffDetail() {
                                     <td>{asset.id}</td>
                                     <td>{asset.type}</td>
                                     <td>{asset.active ? "In Use":"Avaliable"}</td>
-                                    <td>{asset.addDateTime}</td>
+                                    <td>{asset.addDateTime.toLocaleDateString()}</td>
                                     <td>Detail</td>
                                 </tr>
                             ))}
@@ -164,7 +155,7 @@ function StaffDetail() {
                                 {assetRequests.map((request)=>(
                                     <tr>
                                       <td>{request.id}</td>
-                                      <td>{request.assetId}</td>
+                                      <td>{request.asset.id}</td>
                                       <td>{request.type}</td>
                                       <td>{request.quantity}</td>
                                       <td>{request.resolveDatetime == undefined ? "-" : request.resolveDatetime.toLocaleDateString()}</td>
@@ -188,7 +179,7 @@ function StaffDetail() {
                             {maintenanceRequests.map((request)=>(
                                 <tr>
                                   <td>{request.id}</td>
-                                  <td>{request.assetId}</td>
+                                  <td>{request.asset.title}</td>
                                   <td>{request.createDatetime.toLocaleDateString()}</td>
                                   <td>{request.approved == false && request.rejected == false ? "pending" : ""}</td>
                                   <td>{request.resolveDatetime == undefined ? "-" : request.resolveDatetime.toLocaleDateString()}</td>

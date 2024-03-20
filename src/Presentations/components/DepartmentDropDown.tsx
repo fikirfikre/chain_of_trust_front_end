@@ -7,19 +7,27 @@ interface Props{
     isOpen:boolean,
     toggleDropdown:()=>void,
     staff?:User
-    handleInputChange:(value:string)=>void,
+    handleInputChange:(value:Department|undefined)=>void,
+    selectedDep?:Department|undefined
   
 }
 export default function DepartmentDropDown(props:Props){
     const options = initalDepartments;
 
-   const  dep = initalDepartments.filter((dep)=>
-        dep.id == props.staff?.departmentId)
-    const  [selectedOption,setOption] = useState<Department|undefined>(dep[0])
-    const [isDepOpen,setDepOpen] = useState(false);
-    const toggleDepDropdown = () => setDepOpen(!isDepOpen);
+//    const  dep = initalDepartments.filter((dep)=>
+//         dep.id == props.staff?.department)
+    const  [selectedOption,setOption] = useState<Department|undefined>(props.staff?.department)
+    const [departments,setDepartment]=useState<Department[]>(initalDepartments)
+
+    // const updateDepartment = (dep:Department,staff:User)=>{
+    //  const departmentIndex =   initalDepartments.findIndex(department=>department.id === dep.id)
+    // //  initalDepartments[departmentIndex].staff?.push(props.staff)
+    //  setDepartment({...initalDepartments,department})
+    // }
+    // const [isDepOpen,setDepOpen] = useState(false);
+    // const toggleDepDropdown = () => setDepOpen(!isDepOpen);
     useEffect(()=>{
-        props.handleInputChange(selectedOption == undefined ? "":selectedOption.id)
+        props.handleInputChange(selectedOption)
     },[selectedOption])
 
     return(
@@ -45,7 +53,7 @@ export default function DepartmentDropDown(props:Props){
                     key={option.id}
                      onClick={() => {
                         setOption((o)=>o=option)
-                        console.log(selectedOption)
+                        props.toggleDropdown()
                        
                         }}
                 >

@@ -28,8 +28,8 @@ export default function Requests(){
                 {requests.map((request)=>(
                 <tr>
                     <td>{request.id}</td>
-                    <td>{request.assetId}</td>
-                    <td>{request.userId}</td>
+                    {/* <td>{request.asset}</td> */}
+                    <td>{request.user.id}</td>
                     <td>{request.createDatetime.toLocaleDateString()}</td>
                     <td>{request.resolveDatetime == undefined ? "-" : request.resolveDatetime.toLocaleDateString()}</td>
                     <td>Detail</td>
