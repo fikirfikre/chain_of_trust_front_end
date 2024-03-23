@@ -1,15 +1,17 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import styles from './Staff.module.css'
-import { initalRequest } from "../../Domain/list";
+import { initalAssetRequest, initalRequest } from "../../Domain/list";
 import Modal from "react-modal";
 import CreateRequest from "./CreateRequest";
+import { useNavigate } from "react-router-dom";
 export default function Requests(){
  
       
       // Sample Asset Maintenance Request object
-    const [requests,setRequest] = useState(initalRequest);
+    const [requests,setRequest] = useState(initalAssetRequest);
     const [isModalOpen,setModalOpen] = useState(false)
+    const navigate = useNavigate()
     const handleModal=()=>{
         setModalOpen(false)
     }
@@ -41,11 +43,11 @@ export default function Requests(){
                 {requests.map((request)=>(
                 <tr>
                     <td>{request.id}</td>
-                    {/* <td>{request.asset}</td> */}
+                    <td>{request.asset.id}</td>
                     <td>{request.user.id}</td>
                     <td>{request.createDatetime.toLocaleDateString()}</td>
                     <td>{request.resolveDatetime == undefined ? "-" : request.resolveDatetime.toLocaleDateString()}</td>
-                    <td>Detail</td>
+                    <td onClick={()=>navigate(`/requests/${request.id}`)}>Detail</td>
                 </tr>  
                 ))}
 

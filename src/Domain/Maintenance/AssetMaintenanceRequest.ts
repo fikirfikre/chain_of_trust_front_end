@@ -11,4 +11,7 @@ export interface AssetMaintenanceRequest{
     rejected?: boolean;
     rejectionReason?: undefined;
     asset: Asset;
+    questionReason:string;
+    approvedReason?:string;
+    forward?:boolean;
 }

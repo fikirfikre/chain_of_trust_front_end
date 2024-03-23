@@ -3,7 +3,10 @@ import { Department } from "../Department/Department";
 export enum Role{
     Admin,
     User,
-    Manager
+    Manager,
+    Inventor,
+    Technician,
+    HR
 }
 export interface User{
     id:string;

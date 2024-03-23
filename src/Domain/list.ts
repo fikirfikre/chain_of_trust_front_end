@@ -1,5 +1,8 @@
+import { Asset } from "./Asset/Asset";
+import { AssetRequest } from "./AssetRequest/AssetRequest";
 import { Department } from "./Department/Department";
 import { Role, User } from "./User/User";
+
 
 
 export const initalDepartments:Department[] = [
@@ -204,11 +207,12 @@ export const initalStaffs:User[] = [
           resolveDatetime: new Date("2024-03-18T11:15:00Z"),
           approved: false,
           user: initalStaffs[0],
-          assetId: "asset_1",  // No asset ID for new asset request
+          asset: initalAssets[0],  // No asset ID for new asset request
           type: "New Asset",
           quantity: 2,  // Requesting 2 new assets
           rejected: false,
           rejectionReason: undefined,
+          questionReason:undefined
         },
         {
           id: "request_5",
@@ -221,6 +225,7 @@ export const initalStaffs:User[] = [
           quantity: 1,  // Quantity of 1 (implicitly understood for existing asset)
           rejected: false,
           rejectionReason: undefined,
+          questionReason:undefined
         },
         {
             id: "request_6",
@@ -233,30 +238,49 @@ export const initalStaffs:User[] = [
             rejectionReason: undefined,
           },
       ];
-export const initalAssetRequest = [
+export const initalAssetRequest:AssetRequest[] = [
     {
-        id: "request_4",
+        id: "request_3",
         createDatetime: new Date("2024-03-18T10:00:00Z"),
-        resolveDatetime: new Date("2024-03-18T11:15:00Z"),
+        resolveDatetime:undefined,
         approved: false,
         user: initalStaffs[0],
-        assetId: "asset_1",  // No asset ID for new asset request
-        type: "New Asset",
-        quantity: 2,  // Requesting 2 new assets
+        asset: initalAssets[0],  // No asset ID for new asset request
+        // type: "New Asset",
+        // quantity: 2,  // Requesting 2 new assets
         rejected: false,
         rejectionReason: undefined,
+        questionReason:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe omnis id aperiam? Sunt, minima. Facere in ullam ut quam modi.",
+
+      
       },
       {
         id: "request_5",
         createDatetime: new Date("2024-03-18T11:15:00Z"),
         resolveDatetime: new Date("2024-03-18T11:15:00Z"),
-        approved: false,
+        approved: true,
         user: initalStaffs[0],
-        assetId: "asset_2",  // Requesting maintenance for existing asset
-        type: "Existing Asset",
-        quantity: 1,  // Quantity of 1 (implicitly understood for existing asset)
+        asset: initalAssets[1],  // Requesting maintenance for existing asset
+        // type: "Existing Asset",
+        // quantity: 1,  // Quantity of 1 (implicitly understood for existing asset)
         rejected: false,
         rejectionReason: undefined,
+        approvedReason:"It needed",
+        questionReason:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe omnis id aperiam? Sunt, minima. Facere in ullam ut quam modi.",
+      },
+      {
+        id: "request_6",
+        createDatetime: new Date("2024-03-18T11:15:00Z"),
+        resolveDatetime: new Date("2024-03-18T11:15:00Z"),
+        approved: false,
+        user: initalStaffs[0],
+        asset: initalAssets[1],  // Requesting maintenance for existing asset
+        // type: "Existing Asset",
+        // quantity: 1,  // Quantity of 1 (implicitly understood for existing asset)
+        rejected: true,
+        
+        rejectionReason:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe omnis id aperiam? Sunt, minima. Facere in ullam ut quam modi.",
+        questionReason:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe omnis id aperiam? Sunt, minima. Facere in ullam ut quam modi.",
       },
 ]
 export const initalMaintenanceRequest = [
@@ -265,62 +289,48 @@ export const initalMaintenanceRequest = [
             createDatetime: new Date("2024-03-18T11:15:00Z"),
             resolveDatetime: undefined,
             approved: false,
-            userId: "user_1",
-            assetId: "asset_1",  // Requesting maintenance for existing asset
+            user: initalStaffs[0],
+            asset: initalAssets[0],  // Requesting maintenance for existing asset
             rejected: false,
             rejectionReason: undefined,
+            questionReason:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe omnis id aperiam? Sunt, minima. Facere in ullam ut quam modi.",
           },
           {
-            id: "request_6",
+            id: "request_7",
             createDatetime: new Date("2024-03-18T11:15:00Z"),
             resolveDatetime: undefined,
             approved: false,
-            userId: "user_1",
-            assetId: "asset_1",  // Requesting maintenance for existing asset
+            user: initalStaffs[0],
+            asset: initalAssets[0],  // Requesting maintenance for existing asset
             rejected: false,
             rejectionReason: undefined,
+            questionReason:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe omnis id aperiam? Sunt, minima. Facere in ullam ut quam modi.",
           },
           {
-            id: "request_6",
+            id: "request_8",
             createDatetime: new Date("2024-03-18T11:15:00Z"),
             resolveDatetime: undefined,
             approved: false,
-            userId: "user_1",
-            assetId: "asset_1",  // Requesting maintenance for existing asset
+            user: initalStaffs[0],
+            asset: initalAssets[0],  // Requesting maintenance for existing asset
             rejected: false,
             rejectionReason: undefined,
+            questionReason:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe omnis id aperiam? Sunt, minima. Facere in ullam ut quam modi.",
           },
-          {
-            id: "request_6",
-            createDatetime: new Date("2024-03-18T11:15:00Z"),
-            resolveDatetime: undefined,
-            approved: false,
-            userId: "user_1",
-            assetId: "asset_1",  // Requesting maintenance for existing asset
-            rejected: false,
-            rejectionReason: undefined,
-          },
-          {
-            id: "request_6",
-            createDatetime: new Date("2024-03-18T11:15:00Z"),
-            resolveDatetime: undefined,
-            approved: false,
-            userId: "user_1",
-            assetId: "asset_1",  // Requesting maintenance for existing asset
-            rejected: false,
-            rejectionReason: undefined,
-          },
-          {
-            id: "request_6",
-            createDatetime: new Date("2024-03-18T11:15:00Z"),
-            resolveDatetime: undefined,
-            approved: false,
-            userId: "user_1",
-            assetId: "asset_1",  // Requesting maintenance for existing asset
-            rejected: false,
-            rejectionReason: undefined,
-          }
+         
 ]
+export const LoggedUser:User={
+  
+  id: "user_1",
+  email: "user1@example.com",
+  firstName: "John",
+  lastName: "Doe",
+  role: Role.Admin,
+  department: initalDepartments[0]
+  // organizationId: "org_1",
+ 
+
+}
 // export const categoryList: Category[] = [
 //   { id: 'food', title: 'Food' },
 //   { id: 'electronics', title: 'Electronics' },

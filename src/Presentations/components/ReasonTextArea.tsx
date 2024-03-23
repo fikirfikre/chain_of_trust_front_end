@@ -18,7 +18,7 @@ function ReasonTextArea(props:Props) {
             fontWeight: "100",
         }}
     >
-        <h3> Reason </h3>
+        
         <textarea
             typeof="text"
             placeholder='Enter the reason'

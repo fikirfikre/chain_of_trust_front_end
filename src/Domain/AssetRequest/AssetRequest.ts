@@ -10,9 +10,11 @@ export interface AssetRequest{
   user: User;
   rejected?: boolean;
   rejectionReason?:string;
-  questionReason?:string;
+  questionReason:string;
+  approvedReason?:string;
   // type: string;
   // quantity: number;
   asset:Asset;
+  forward?:boolean;
   }
   

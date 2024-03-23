@@ -8,6 +8,7 @@ import Staffs from "./Staff";
 import Requests from "./Request";
 import StaffDetail from "./StaffDetail";
 import PropertyDetail from "./PropertyDetail";
+import RequestDetail from "./RequestDetail";
 
 function AppLayout() {
     return (
@@ -24,9 +25,8 @@ function AppLayout() {
                     <Route path="staffs" element={<Staffs/>}/>
                     <Route path="staffs/:staffId" element={<StaffDetail />} />
                     <Route path="assets/:assetId" element={<PropertyDetail />} />
-
-           
                     <Route path="requests" element={<Requests/>}/>
+                    <Route path="requests/:requestId" element={<RequestDetail/>}/>
                    </Routes>
                  
                 </main>

@@ -9,7 +9,7 @@ interface Props {
     handleInputChange:(value:Asset)=>void
 }
 function AvaliableAssetDropdown(props: Props) {
-    const AvailableAsset: Asset[] = initalAssets.filter((asset) => asset.active == true)
+    const AvailableAsset: Asset[] = initalAssets.filter((asset) => asset.active === true)
     const [selectedOption, setOption] = useState<Asset>()
     const handleSelectedOption = (option: Asset) => {
         props.handleInputChange(option)
@@ -17,7 +17,7 @@ function AvaliableAssetDropdown(props: Props) {
         
     }
     return (
-        <div className={style.main_box}>
+        <div className={style.main_box} onClick={(e) => e.stopPropagation()}>
             <div className={style.input_box}>
                 <input
                     style={{

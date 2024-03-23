@@ -53,16 +53,21 @@ function StaffDetail() {
         setIndex((i)=>i=value)
     }
     useEffect(()=>{
+        //get user using staff id - user(slectedUser)
         const filterUser = initalStaffs.filter((user) => user.id == staffId);
         setStaff(filterUser[0])
+        //get 
+        //get asset using staff Id - 
         const assets = initalAssets.filter((asset)=>asset.owner?.id == staffId);
         setAsset(assets)
-        // const requests = initalAssetRequest.filter((request)=>request.userId == staffId);
-        //  setAssetRequest(requests)
-        // const maintreq = initalMaintenanceRequest.filter((request)=>request.userId == staffId);
-        // setMaintenanceRequest(maintreq)
+        //get request using staff Id 
+        const requests = initalAssetRequest.filter((request)=>request.user.id == staffId);
+         setAssetRequest(requests)
+         //get request using staff Id
+        const maintreq = initalMaintenanceRequest.filter((request)=>request.user.id == staffId);
+        setMaintenanceRequest(maintreq)
     
-    },[])
+    },[staffId])
   
 	return (
 		<div className='staff-detail'>
@@ -92,6 +97,7 @@ function StaffDetail() {
 						
 								<Modal
 									isOpen={isModalOpenThree}
+                                    // appElement={document.getElementById('root')}
 									onRequestClose={() => setIsModalOpenThree(false)}
 									className='modal-content custom-property'
 									overlayClassName='modal-overlay'
@@ -104,7 +110,8 @@ function StaffDetail() {
 									isOpen={isModalOpenTwo}
 									onRequestClose={() => setIsModalOpenTwo(false)}
 									className='modal-content custom-property'
-									overlayClassName='modal-overlay'>
+									overlayClassName='modal-overlay'
+                                    >
                   <DeleteStaff staff={staff} handleModal={handleDeleteClicked}/>
 						    
 								</Modal>
@@ -116,15 +123,17 @@ function StaffDetail() {
                         <div className="list-box">
                         <table>
                             <thead>
+                                <tr key={"employee asset"}>
                                 <th>Asset ID</th>
                                 <th>Asset Type</th>
                                 <th>Status</th>
                                 <th>Created Date</th>
                                 <th></th>
+                                </tr>
                             </thead>
                             <tbody>
                             {assets.map((asset)=>(
-                                <tr>
+                                <tr key={asset.id}>
                                     <td>{asset.id}</td>
                                     <td>{asset.type}</td>
                                     <td>{asset.active ? "In Use":"Avaliable"}</td>
@@ -144,19 +153,20 @@ function StaffDetail() {
                         <table>
 
                             <thead>
+                                <tr key={"employee-request"}>
                                 <th>Request ID</th>
                                 <th>Asset ID</th>
-                                <th>Staff ID</th>
+                              
                                 <th>created Date</th>
                                 <th>Resolved Date</th>
                                 <th></th>
+                                </tr>
                             </thead>
                             <tbody>
                                 {assetRequests.map((request)=>(
                                     <tr>
                                       <td>{request.id}</td>
                                       <td>{request.asset.id}</td>
-                                      <td>{request.user.id}</td>
                                       <td>{request.createDatetime.toLocaleDateString()}</td>
                                       <td>{request.resolveDatetime == undefined ? "-" : request.resolveDatetime.toLocaleDateString()}</td>
                                       <td>Detail</td>
@@ -168,16 +178,18 @@ function StaffDetail() {
                         :  <table>
 
                         <thead>
+                            <tr>
                             <th>Request ID</th>
                             <th>Asset ID</th>
                             <th>created Date</th>
                             <th>approved</th>
                             <th>Resolved Date</th>
                             <th></th>
+                            </tr>
                         </thead>
                         <tbody>
                             {maintenanceRequests.map((request)=>(
-                                <tr>
+                                <tr key={request.id}>
                                   <td>{request.id}</td>
                                   <td>{request.asset.title}</td>
                                   <td>{request.createDatetime.toLocaleDateString()}</td>

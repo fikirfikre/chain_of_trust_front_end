@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Role, User } from "../../Domain/User/User";
 import { Department } from "../../Domain/Department/Department";
 import { initalDepartments } from "../../Domain/list";
-
+import Modal from "react-modal";
 interface Props {
     handlModal: () => void
     staff: User
@@ -77,7 +77,7 @@ function EditStaff(props: Props) {
     };
 
 
-    return <div onClick={() => {
+    return <div className="box" onClick={() => {
         setDepOpen(false);
         setRoleOpen(false);
     }}>

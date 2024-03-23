@@ -909,7 +909,7 @@
 	  transform: translateX(-50%);
 	  display: flex;
 	  flex-direction: column;
-	  align-items: start;
+	  align-items: flex-start;
 	  justify-content: center;
 	  padding: 15px;
 	  padding-left: 7em;
@@ -1014,7 +1014,7 @@
 	  color: white;
 	  display: flex;
 	  flex-direction: column;
-	  align-items: start;
+	  align-items: flex-start;
 	  justify-content: center;
 	  padding: 20px;
 	  padding-left: 60px;
@@ -1137,7 +1137,7 @@
 	  padding-left: 6em;
 	  display: flex;
 	  flex-direction: column;
-	  align-items: start;
+	  align-items: flex-start;
   }
   .dep .inputs h4 {
 	  font-family: "Trebuchet MS", sans-serif;
@@ -1201,7 +1201,7 @@
 	  padding-left: 6em;
 	  display: flex;
 	  flex-direction: column;
-	  align-items: start;
+	  align-items: flex-start;
   }
   .category .inputs h4 {
 	  font-family: "Trebuchet MS", sans-serif;
@@ -1295,7 +1295,7 @@
   }
   .frame span h2 {
 	  font-size: 20px;
-	  text-align: start;
+	  text-align: flex-start;
 	  font-weight: 100;
 	  width: 5em;
   }
@@ -1599,7 +1599,7 @@
 	  width: 35em;
 	  display: flex;
 	  flex-direction: column;
-	  align-items: start;
+	  align-items: flex-start;
   }
   .custom-property .inputs h4 {
 	  font-family: "Trebuchet MS", sans-serif;
@@ -1619,7 +1619,7 @@
   }
   .custom-property .row {
 	  display: flex;
-	  align-items: start;
+	  align-items: flex-start;
 	  margin: 20px 0 20px 0;
   }
   .custom-property .row .input-container {
@@ -1661,6 +1661,7 @@
 	 background-color:#828282;
 	 color:white
   }
+ 
   .option-select{
 	  width: 100%;
 	  /* margin-left: 10px; */
@@ -1792,7 +1793,7 @@
   }
   
   /* ///////////// staff detail  ////// */
-  .staff-detail,.property-detail {
+  .staff-detail,.property-detail,.request-detail {
 	  display: flex;
 	  box-sizing: border-box;
 	  margin: 3rem;
@@ -1802,12 +1803,14 @@
 	  flex: 1;
   }
   .property-detail .body,
-  .staff-detail .body {
+  .staff-detail .body,
+  .request-detail .body {
 	  width: 100%;
 	  box-sizing: border-box;
   }
   .staff-detail .body .one ,
-   .property-detail .body .one {
+   .property-detail .body .one
+  {
 	  
 	  display: flex;
 	  align-items:center;
@@ -1899,32 +1902,38 @@
   .request .content {
 	  flex: 7.5;
   }
-  .request-detail {
-	  display: flex;
-  }
+
   .request-detail .side-bar {
 	  flex: 1;
   }
-  .request-detail .content {
+  /* .request-detail .content {
 	  flex: 7.5;
+  } */
+  .request-detail  .body{
+	margin: 3rem;
   }
-  .request-detail .content .body .one {
+
+  .request-detail  .body .one {
+	 
 	  display: flex;
-	  align-items: start;
+	  align-items: flex-start;
+	  justify-content: space-between;
+	  width: 100%;
   }
-  .request-detail .content .body .one .col {
-	  margin-right: 20em;
-	  width: 80%;
+  .request-detail .body .one .col,
+  .request-detail .body .one .col2{
+	width: 50%;
   }
-  .request-detail .content .body .one .col2 {
-	  margin-right: 30em;
-  }
-  .request-detail .content .body .col ul{
+
+  .request-detail  .body .one .col ul,
+  .request-detail  .body .one .col2 ul{
 	  list-style: none;
 	  width: 100%;	
   }
-  .request-detail .content .body .col ul li{
+  .request-detail  .body .col ul li,
+  .request-detail  .body .col2 ul li{
 	  padding: 6px 0;
+	  margin-bottom: 0.8rem;
   
   }
   .request-detail .content .body .two{
@@ -1938,15 +1947,27 @@
 	  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	  padding: 10px 45px;
   }
-  .request-detail .content .body button{
-	  margin-left: 70em;
-	  background-color:#000f2c;
-	  color: white;
+  .request-detail .body button{
+	  margin-top: 4rem;
+	  
 	  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);
 	  padding: 10px 45px;
 	  border: none;
 	  font-size: 18px;
 	  border-radius: 10px;
+  }
+  .request-detail .body .verify-button{
+	background-color:#000f2c;
+	color: white;
+  }
+  .request-detail .body .reject-button{
+	background-color:white;
+	color: black;
+  }
+  .request-detail .body .buttons{
+	display: flex;
+	width: 100%;
+	gap:10rem
   }
   /* /////////////////  department   /////////// */
   .department {
@@ -1989,3 +2010,5 @@
   .delete-box{
 	  width: 100%;
   }
+
+  
