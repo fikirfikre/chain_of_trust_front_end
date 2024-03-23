@@ -10,12 +10,14 @@ import {
 import styles from './SideBar.module.css'
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { JsxElement } from "typescript";
+
 function SideBar(){
-    const [selectedIndex, setSelected] = useState(0)
-    function handleSelected(index:number){
-        console.log(index)
-        setSelected(s=>s=index);
-    }
+    const [activeLink,setActiveLink] = useState<string>('/admin')
+	const handleNavLinkClick = (path: string) => {
+		setActiveLink(path);
+	  };
+
     const sidebar = [
 		{
 			title: "Dashboard",
@@ -53,8 +55,8 @@ function SideBar(){
      <h1>Chain of Trust</h1>
      <ul>
         {sidebar.map((item,index)=>(
-            <li key={index} className={`${index == selectedIndex? styles.selected : ""}`}>
-                <NavLink to={item.link} onClick={()=>handleSelected(index)} >
+            <li key={index} >
+                <NavLink to={item.link}  className={({ isActive }) => (isActive ? styles.selected : '')} onClick={()=>handleNavLinkClick(item.link)} >
               
                 <span>{item.icons}</span>
                 <p>{item.title}</p>

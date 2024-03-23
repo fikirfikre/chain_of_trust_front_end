@@ -84,7 +84,7 @@ return (
                     style={{
                         color: "white",
                         backgroundColor: "black",
-                        marginRight: "16em",
+                        
                     }}
                     onClick={props.handleModal}
                 >
@@ -95,7 +95,7 @@ return (
                         style={{
                             color: "black",
                             backgroundColor: "white",
-                            marginRight: "16em",
+                            // marginRight: "16em",
                         }}
                     >
                         Save

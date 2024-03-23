@@ -30,7 +30,7 @@
 	color: var(--color-light--2);
 	font-weight: 400;
 	line-height: 1.6;
-	height: 100%;
+	
 	width: 100%;
 	font-size: 1.5rem;
   }
@@ -44,7 +44,9 @@
   .navbar {
 	  display: flex;
 	  align-items: center;
-	  justify-content: space-between;
+	  gap:8rem;
+	  /* justify-content: space-between; */
+	
 	  padding: 0 7em;
 	  font-family: "Lobster", cursive;
 	  margin-top: 30px;
@@ -59,8 +61,14 @@
   .menu {
 	  list-style: none;
 	  display: flex;
+	  flex:1;
 	  align-items: center;
+	  /* justify-content: space-between; */
+
+	
   }
+
+
   .menu li {
 	  margin: 0 20px;
   }
@@ -87,39 +95,61 @@
 	  transform: scaleX(1);
 	  transform-origin: bottom left;
   }
-  .menu span {
+  .menu-box{
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+  }
+  .signin {
 	  padding: 12px 40px;
 	  color: white;
 	  font-size: 18px;
 	  background-color: #000f2c;
 	  border-radius: 30px;
-	  margin-left: 35em;
+	  /* margin-left: 35em; */
   }
-  .menu span a {
+ 
+  .signin  a {
 	  text-decoration: none;
 	  color: white;
   }
-  .menu span:hover {
+  .signin:hover {
 	  color: rgb(29, 28, 28);
 	  transition: all 0.4s;
 	  background-color: #042942e3;
   }
+  .home{
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+  }
   .home .content {
-	  margin: 40px 13em;
+	  /* padding: 40px ; */
 	  display: flex;
 	  justify-content: space-between;
+	  box-sizing: border-box;
   }
   
   .home .part1 {
-	  flex: 1;
-	  padding: 30px;
+	display: flex;
+	flex-direction: column;
+	  /* flex: 1 1; */
+	  /* padding: 30px; */
+	  position: absolute;
+	  /* margin-top: 15px;
+	  margin-left: 3em; */
+	  margin: 3rem;
+	  margin-top:10rem;
+	  /* margin-left: 10rem; */
+	  z-index: 5;
+	  gap:3rem;
   }
   
   .home .part1 h4 {
 	  margin-bottom: 10px;
-	  width: 10em;
-	  padding: 15px;
-	  font-size: 20px;
+	  width: 20rem;
+	  padding: 1rem 0rem;
+	  font-size: 1.5rem;
 	  font-weight: 100;
 	  text-align: center;
 	  border-radius: 10px;
@@ -127,28 +157,26 @@
   }
   .home .part1 p {
 	  border-top: 2px solid rgb(218, 218, 218);
-	  margin-top: 380px;
+	  /* margin-top: 380px; */
 	  padding-top: 30px;
 	  color: #5c5c5c;
-	  width: 32em;
+	  width: 22em;
+	  left:0;
   }
   .home .part1 ul {
 	  list-style: none;
 	  padding: 0;
-	  margin: 0;
-	  position: absolute;
-	  margin-top: 15px;
-	  margin-left: 3em;
+	  margin-left: 10rem;
 	  z-index: 5;
   }
   .home .part1 ul li {
-	  font-size: 80px;
+	  font-size: 5rem;
 	  font-weight: 600;
 	  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 	  background-color: white;
 	  border-radius: 25px;
-	  padding-left: 30px;
-	  padding: 8px 30px;
+	  /* padding-left: 30px; */
+	  padding: 1rem 3rem;
 	  z-index: 5;
   }
   
@@ -161,7 +189,7 @@
 	  border-radius: 10px;
 	  color: white;
 	  font-size: 16px;
-	  width: 17em;
+	  width: 17rem;
 	  padding: 0 10px;
   }
   .home .part1 a {
@@ -175,9 +203,11 @@
   }
   .home .part2 {
 	  flex: 1;
-	  margin-top: -2em;
+	  /* margin-top: -2em; */
 	  display: flex;
 	  align-items: center;
+	  margin-left: 40rem;
+	  overflow: hidden;
   }
   .home .column1 {
 	  margin-right: 4em;
@@ -188,8 +218,10 @@
   .home .column1,
   .home .column2 {
 	  position: relative;
-	  width: 430px;
+	  min-width: 20rem;
+	  max-width:40rem;
 	  height: 580px;
+	  min-height: 50rem;
 	  border-radius: 50px;
 	  overflow: hidden;
   }
@@ -292,8 +324,10 @@
 	  display: flex;
 	  flex-direction: column;
 	  align-items: center;
-	  margin: 0 10em;
-	  margin-top: 12em;
+	  margin: 0 3rem;
+	  margin-top: 10rem;
+	 
+	
   }
   
   .home .services .title {
@@ -303,7 +337,8 @@
 	  justify-content: space-between;
 	  width: 100%;
 	  padding: 10px;
-	  font-size: 35px;
+	  font-size: 4rem;
+	  margin-bottom: 5rem;
   }
   .home .services .title h4 {
 	  font-weight: 100;
@@ -312,7 +347,8 @@
 	  margin: 0;
 	  margin-left: 8em;
 	  font-weight: 100;
-	  font-size: 27px;
+	  font-size: 3rem;
+	  text-align: end;
   }
   .home .services .title span {
 	  display: flex;
@@ -324,19 +360,23 @@
 	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   .home .lists {
-	  margin-top: 4em;
+	  /* margin: 4em ; */
+	  align-content: center;
 	  display: flex;
 	  flex-wrap: wrap;
 	  gap: 20px;
-	  padding: 20px;
+	  /* padding: 5rem; */
+	  align-items: center;
+	  justify-items: center;
   }
   .home .mapped {
 	  background-color: #fff;
-	  margin-right: 50px;
+	  /* margin-right: 50px; */
 	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	  padding: 50px 55px;
+	  padding: 3rem 3rem;
 	  border-radius: 20px;
 	  text-align: center;
+	  align-self: center;
   }
   .home .mapped h2 {
 	  font-weight: 100;
@@ -350,7 +390,8 @@
 	  display: flex;
 	  flex-direction: column;
 	  align-items: center;
-	  margin-top: 15em;
+	  margin-top: 8rem;
+	  
   }
   .home .services .content h2 {
 	  font-size: 40px;
@@ -360,19 +401,22 @@
 	  text-align: center;
 	  font-size: 18px;
 	  color: grey;
+	  padding: 4rem;
   }
   .home .about {
 	  display: flex;
-	  justify-content: space-around;
-	  margin-left: 15em;
-	  margin-top: 10em;
+	  justify-content: space-between;
+	  margin: 0rem 6rem;
+	  margin-top: 5rem;
+	  box-sizing: border-box;
   }
-  .home .about h1 {
+  .about-title {
 	  font: 400 40px Orelega One, sans-serif;
 	  margin-bottom: 2em;
+	  text-align: center;
   }
-  .home .about h1::before,
-  .home .about h1::after {
+  .about-title::before,
+  .about-title::after {
 	  content: "";
 	  display: inline-block;
 	  width: 100px;
@@ -388,13 +432,16 @@
   }
   .home .about .col {
 	  position: relative;
-	  width: 35em;
-	  height: 10em;
+	  box-sizing: border-box;
+	  flex:1;
+	  /* width: 35em; */
+	  /* height: 10em; */
   }
   .home .about .img-container {
 	  position: relative;
 	  width: 100%;
-	  margin-left: 5em;
+	  /* margin-left: 5em; */
+	
   }
   .home .about .img-container::before {
 	  content: "";
@@ -405,17 +452,22 @@
 	  height: 100%;
 	  background-color: rgba(0, 0, 0, 0.5);
 	  border-radius: 60px;
+	 
   }
   .home .about .img-container img {
-	  width: 35em;
+	  width: 100%;
 	  height: 27em;
 	  border-radius: 60px;
 	  display: block;
+	  
+	  
   }
   .home .about .col p {
 	  position: absolute;
-	  right: -150px;
-	  bottom: -26em;
+	  /* right: -150px; */
+	  /* bottom: -26em; */
+	  right:-8rem;
+	  bottom: -2rem;
 	  z-index: 5;
 	  text-align: center;
 	  border-radius: 20px;
@@ -444,8 +496,8 @@
 	  padding: 60px 20px;
 	  padding-bottom: 0;
 	  border-top: #c5c5c5 solid 1px;
-	  margin: 10px 10em;
-	  margin-top: 20em;
+	  margin: 10px 3rem;
+	  margin-top: 15rem;
   }
   .footerContent {
 	  display: flex;
@@ -665,17 +717,19 @@
 	  align-items: center;
   }
   .service .title {
-	  width: 10em;
-	  margin: 2em 0 0 1em;
+	  /* width: 10em; */
+	  /* margin: 2em 0 0 1em; */
 	  text-align: center;
+	  margin-top: 5rem;
 	  color: #000;
-	  font: 400 80px Orelega One, sans-serif;
+	  font: 400 5rem Orelega One, sans-serif;
   }
   .service h4 {
-	  margin: 6em 0 0 0;
+	  /* margin: 6em 0 0 0; */
+	  margin-top: 10rem;
 	  text-align: center;
 	  color: #000;
-	  font: 400 50px Orelega One, sans-serif;
+	  font: 400 3rem Orelega One, sans-serif;
   }
   .service .part-two {
 	  margin-top: 5em;
@@ -697,7 +751,7 @@
   .service .part-two .cols span::after {
 	  content: "";
 	  display: inline-block;
-	  width: 100px;
+	  width: 5rem;
 	  height: 2px;
 	  background-color: #d3d3d3;
 	  vertical-align: middle;
@@ -719,18 +773,18 @@
 	  justify-content: space-between;
 	  width: 100%;
 	  padding: 10px;
-	  margin-top: 5em;
+	  margin-top: 5rem;
 	  font-size: 35px;
   }
   .service .part-three .title h5 {
 	  font-weight: 100;
-	  font-size: 1.3em;
+	  font-size: 4rem;
   }
   .service .part-three .title h3 {
 	  margin: 0;
-	  margin-left: 8em;
+	  text-align: end;
 	  font-weight: 100;
-	  font-size: 27px;
+	  font-size: 3rem;
   }
   .service .part-three .title span {
 	  display: flex;
@@ -742,7 +796,7 @@
 	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   .service .part-three .lists {
-	  margin-top: 4em;
+	  margin-top: 5rem;
 	  margin-left: 50px;
 	  display: flex;
 	  flex-wrap: wrap;
@@ -774,14 +828,15 @@
   }
   .service .part-four h2 {
 	  color: #000;
-	  margin-top: 236px;
+	  margin-top: 5rem;
 	  text-align: center;
-	  font: 400 45px Orelega One, sans-serif;
+	  font: 400 5rem Orelega One, sans-serif;
   }
   .service .part-four .process-details {
-	  margin-top: 5em;
+	  margin-top: 5rem;
 	  display: flex;
-	  margin-left: 13em;
+	  justify-content: space-between;
+	  /* margin-left: 13em; */
   }
   .service .column1 {
 	  display: flex;
@@ -870,9 +925,12 @@
   /* //////////////////   Sign in page /////////////////////// */
   .signin-page {
 	  display: flex;
-	  height: 80vh;
-	  margin: 70px 200px;
+	  height: 90vh;
+	  margin: 5rem;
 	  background-color: #000;
+	  box-sizing: border-box;
+	  position: relative;
+	 
   }
   .signin-page .image-cont {
 	  width: 68%;
@@ -892,36 +950,38 @@
 	  width: 100%;
 	  height: 100%;
 	  object-fit: cover;
+	
   }
   .signin-page .image-cont h1 {
-	  position: absolute;
-	  top: 1.2em;
-	  left: 1em;
-	  width: 5em;
-	  font: 400 100px Orelega One, sans-serif;
-	  color: white;
+	position: absolute;
+    top: 15rem;
+    left: 3rem;
+    width: 50rem;
+    font: 400 8rem Orelega One, sans-serif;
+    color: white;
   }
   .signin-page .fields {
 	  color: white;
 	  position: absolute;
-	  top: 5em;
-	  left: 70%;
+	  top: 5rem;
+	  right:-26rem;
 	  transform: translateX(-50%);
 	  display: flex;
 	  flex-direction: column;
 	  align-items: flex-start;
 	  justify-content: center;
-	  padding: 15px;
+	  padding: 1rem;
 	  padding-left: 7em;
-	  margin: 40px 0;
+	  /* margin: 40px 0; */
 	  width: 37%;
-	  height: 65%;
+	  /* height: 65%; */
 	  border-top-left-radius: 50px;
 	  border-bottom-left-radius: 50px;
 	  background-color: #ffffff3b;
+	  overflow: hidden;
   }
   .signin-page .fields h2 {
-	  font-size: 62px;
+	  font-size: 6rem;
 	  margin-bottom: 10px;
   }
   .signin-page .fields h3 {
@@ -942,7 +1002,8 @@
 	  display: flex;
 	  flex-direction: column;
 	  justify-content: center;
-	  align-items: center;
+	  align-items: start;
+	  
 	  
 	  /* margin-left: 4em; */
 	  /* width: 45%; */
@@ -961,9 +1022,9 @@
 	  background-color: #011b33;
 	  color: white;
 	  padding: 15px 10px;
-	  font-size: 18px;
+	  font-size: 2rem;
 	  border: none;
-	  margin-top: 4em;
+	  margin-top: 2rem;
 	  border-radius: 5px;
 	  cursor: pointer;
   }
@@ -1337,6 +1398,7 @@
 	  max-width:20rem ;
 	  width:20rem ;
 	  min-width: 20rem;
+	  height: 100%;
   }
   .admin-dashboard .right-bar h3 {
 	  font: 100 18px Arial, sans-serif;
@@ -1570,7 +1632,7 @@
   .modal-content {
 	  background-color: black;
 	  padding: 5rem;
-	  padding-bottom: 8rem;
+	  /* padding-bottom: 8rem; */
 	  border-radius: 10px;
 	  box-sizing: border-box;
   }
@@ -1611,7 +1673,7 @@
 	  width: 50%;
 	  font-size: 16px;
 	  padding: 12px;
-	  margin-bottom: 15px;
+	  /* margin-bottom: 15px; */
 	  box-sizing: border-box;
 	  border: 1px solid #ccc;
 	  border-radius: 5px;
