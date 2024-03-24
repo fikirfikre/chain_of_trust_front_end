@@ -18,13 +18,21 @@ import Navbar from "../general/Navbar";
 import { PiGitPullRequest, PiHouse, PiSquaresFourBold, PiTree } from "react-icons/pi";
 import { FaTv } from "react-icons/fa";
 import { MdPeople } from "react-icons/md";
+import Main from "./Main";
+import MainSecond from "./MainSecond";
 
 function requiredSidebar(path:RouteProps['path']){
     const excludedRoutes = ['/', '/about', '/service','/signin','/signup']; // Add your excluded routes here (if any)
     return !excludedRoutes.includes(path!);
 }
 function requiredNavbar(path:RouteProps['path']){
-    const excludedRoutes = ['/admin', '/assets', '/categories','/departments','/staffs',"/staffs/:staffId","/assets/:assetId","/requests","/requests/:requestId"  ]; // Add your excluded routes here (if any)
+    const excludedRoutes = ['admin', '/assets', '/categories','/departments','/staffs',"/staffs/:staffId","/assets/:assetId","/requests","/requests/:requestId"  ]; 
+      const staffListRegex = /^\/staffs\/[^/]+$/;
+      const assetListRegex = /^\/assets\/[^/]+$/;
+      const requestsListRegex = /^\/requests\/[^/]+$/;
+     excludedRoutes.push(staffListRegex.toString());
+     excludedRoutes.push(assetListRegex.toString());
+     excludedRoutes.push(requestsListRegex.toString());
     return !excludedRoutes.includes(path!);
 }
 function AppLayout() {
@@ -32,32 +40,28 @@ function AppLayout() {
     return (
         
         <BrowserRouter>
-        {requiredNavbar(window.location.pathname) && <Navbar />}
-            <div className={`${requiredSidebar(window.location.pathname)? 'app' : " "} ` } >
-            {requiredSidebar(window.location.pathname) && <SideBar/>}
-            
-                <main className={`${requiredSidebar(window.location.pathname) ? 'main-content' : " "} ` } >
+       
                    <Routes>
-                    <Route path="/admin" element={<DashBoard/>}/>
-                    <Route path="/assets" element={<Property/>}/>
-                    <Route path="/categories" element={<Category/>}/>
-                    <Route path="/departments" element={<DepartmentPage/>}/>
-                    <Route path="/staffs" element={<Staffs/>}/>
-                    <Route path="/staffs/:staffId" element={<StaffDetail />} />
-                    <Route path="/assets/:assetId" element={<PropertyDetail />} />
-                    <Route path="/requests" element={<Requests/>}/>
-                    <Route path="/requests/:requestId" element={<RequestDetail/>}/>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/about" element={<About/>}/>
-                    <Route path="/service" element={<Services/>}/>
-                    <Route path="/signin" element={<Signin/>}/>
-                    <Route path="/signup" element={<Signup/>}/>
+                    <Route path="/admin" element={<Main child={<DashBoard/>}/>}/>
+                    <Route path="/assets" element={<Main child={<Property/>}/>}/>
+                    <Route path="/categories" element={<Main child={<Category/>}/>}/>
+                    <Route path="/departments" element={<Main child={<DepartmentPage/>}/>}/>
+                    <Route path="/staffs" element={<Main child={<Staffs/>}/>}/>
+                    <Route path="/staffs/:staffId" element={<Main child={<StaffDetail/>}/>} />
+                    <Route path="/assets/:assetId" element={<Main child={<PropertyDetail/>}/>} />
+                    <Route path="/requests" element={<Main child={<Requests/>}/>}/>
+                    <Route path="/requests/:requestId" element={<Main child={<RequestDetail/>}/>}/>
+                    <Route path="/" element={<MainSecond child={<Home/>}/>}/>
+                    <Route path="/about" element={<MainSecond child={<About/>}/>}/>
+                    <Route path="/service" element={<MainSecond child={<Services/>}/>}/>
+                    <Route path="/signin" element={<MainSecond child={<Signin/>}/>}/>
+                    <Route path="/signup" element={<MainSecond child={<Signup/>}/>}/>
                    </Routes>
                  
-                </main>
+                
               
-            </div>
-
+          
+    
             </BrowserRouter>
     )
 }
