@@ -1040,8 +1040,9 @@
   /* //////////////////  Sign up page /////////////////////// */
   .signup-page {
 	  display: flex;
-	  height: 80vh;
-	  margin: 70px 200px;
+	  height: 100%;
+	  margin: 5rem 10rem;
+	  margin-bottom: 5rem;
 	  background-color: #000;
   }
   .signup-page .image-cont {
@@ -1104,7 +1105,7 @@
 	  display: flex;
 	  flex-direction: column;
 	  margin-left: 4em;
-	  width: 55%;
+	  /* width: 55%; */
   }
   .signup-page .fields input {
 	  width: 100%;

@@ -63,7 +63,7 @@ function Home() {
 							Reliable
 						</li>
 						<li style={{ color: "#001c55", width: "7.3em" }}>Property track</li>
-						<li style={{ width: "6.4em", borderTopRightRadius: "0" }}>
+						<li style={{ width: "30rem", borderTopRightRadius: "0" }}>
 							Made simple
 						</li>
 					</ul>

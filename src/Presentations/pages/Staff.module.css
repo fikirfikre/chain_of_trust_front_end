@@ -8,6 +8,7 @@ table td, table th{
    padding: 2rem;
    white-space: nowrap; /* Prevent text wrapping */
    text-overflow: ellipsis;
+   border-collapse: collapse;
 } 
 /* table tr:nth-child(even){background-color: rgba(128, 120, 110, 0.244);} */
 table thead {

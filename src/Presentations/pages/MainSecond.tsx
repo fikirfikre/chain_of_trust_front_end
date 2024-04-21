@@ -6,7 +6,7 @@ interface Props{
 }
 function MainSecond(props:Props){
   return(
-    <div >
+    <div>
         <NavBar/>
       
            {props.child}

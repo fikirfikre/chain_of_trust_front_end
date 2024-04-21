@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import image from "./home.jpeg";
+import Footer from "../components/Footer";
 
 function Signin() {
 	return (
+		<>
 		<div className='signin-page'>
 			<div className='image-cont'>
 				<img src={image} alt='img' />
@@ -20,11 +22,13 @@ function Signin() {
 					<span>
 						Don't have an account?
 						
-						<Link to="/signup">Home</Link>
+						<Link to="/signup"> Sign up</Link>
 					</span>
 				</div>
 			</div>
 		</div>
+		<Footer/>
+		</>
 	);
 }
 
